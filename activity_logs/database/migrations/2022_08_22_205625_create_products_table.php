@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("product_name");
             $table->string("product_cost");
             $table->string("product_type");
-            $table->string("status");
+            $table->string("status")->default('pending');
             $table->timestamps();
         });
     }
