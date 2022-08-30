@@ -14,7 +14,39 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6 col-xl-6">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Products</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Products : {{ $total_products }}</h5>
+                                    <hr />
+                                    <p class="m-b-0">Unpublished Products : <span
+                                            class="f-right">{{ $pending_products }}</span></p>
+                                </div>
+                            </div>
+
+
+                            @if (auth()->user()->is_admin === 1)
+                                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Users</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Users : {{ $total_users }}</h5>
+                                        <hr />
+                                        <p class="m-b-0">Pending Users : <span
+                                                class="f-right">{{ $inactive_users }}</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Users</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Users : {{ $total_users }}</h5>
+                                        <hr />
+                                        <p class="m-b-0">Pending Users : <span
+                                                class="f-right">{{ $inactive_users }}</span></p>
+                                    </div>
+                                </div>
+                            @endif
+                            {{-- <div class="col-md-6 col-xl-6">
                                 <div class="card bg-c-blue order-card">
                                     <div class="card-block">
                                         <h6 class="m-b-20">All Products</h6>
@@ -35,36 +67,36 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif
+                            @endif --}}
 
 
                             <div>
-                            <br /><br />
-                            <h1>Activity Logs Table</h1>
-                            <br/>
-                    <table id="example" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Activity</th>
-                                        <th>Timestamp</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($activities as $activity)
-                                    <tr>
-                                        <td>{!! $activity->activity !!}</td>
-                                        <td>{{ $activity->created_at }}</td>
-                                    </tr>
-                                @endforeach
+                                <br /><br />
+                                <h1>Activity Logs Table</h1>
+                                <br />
+                                <table id="example" class="table table-dark table-striped" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Activity</th>
+                                            <th>Timestamp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($activities as $activity)
+                                            <tr>
+                                                <td>{!! $activity->activity !!}</td>
+                                                <td>{{ $activity->created_at }}</td>
+                                            </tr>
+                                        @endforeach
 
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Activity</th>
-                                        <th>Timestamp</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Activity</th>
+                                            <th>Timestamp</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
 
                         </div>

@@ -104,7 +104,7 @@
                                 <br/><br/>
                                 <h1>Product Table</h1>
                                 <br />
-                                <table id="example" class="table table-striped" style="width:100%">
+                                <table id="example" class="table table-dark table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -112,7 +112,7 @@
                                             <th>Cost</th>
                                             <th>Type</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Actions</th>
                                             <th>Timestamp</th>
                                         </tr>
                                     </thead>
@@ -125,8 +125,9 @@
                                             <td>{{ $product->product_type }}</td>
                                             <td>{{ $product->status }}</td>
                                             <td>
+                                            <div class="container">
                                             <div class="row">
-                                            <div class="col-3">
+                                            <div class="col-xs-2 col-sm-4 col-md-4 col-lg-4">
                                             @if ($product->status === 'pending')
                                                 <a href="{{ route('product_status') }}/{{ $product->id }}" class="btn btn-block btn-success">Publish</a>
                                             @else
@@ -134,10 +135,10 @@
                                             @endif
 
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-xs-2 col-sm-4 col-md-4 col-lg-4">
                                             <a href="{{ route('edit') }}/{{ $product->id }}" class="btn btn-block btn-warning">edit</a>
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                             <form method="post" action="{{route('destroy')}}">
                                                 {{-- @method('delete') --}}
                                                 @csrf
@@ -146,6 +147,8 @@
                                             </form>
                                             </div>
                                             </div>
+                                            </div>
+
 
                                             </td>
                                             <td>{{ $product->created_at }}</td>
@@ -164,7 +167,7 @@
                                             <th>Cost</th>
                                             <th>Type</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Actions</th>
                                             <th>Timestamp</th>
                                         </tr>
                                     </tfoot>

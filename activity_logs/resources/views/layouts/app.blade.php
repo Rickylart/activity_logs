@@ -10,9 +10,17 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
+    <!-- bootstrap5 dataTables css cdn -->
+    <link rel="stylesheet" href="{{ asset('datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css') }}"/>
+
+
         {{-- custom ones --}}
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+
+         <script src="{{ asset('datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('jquery.js') }}"></script>
+    <script src="{{ asset('datatables/DataTables-1.12.1/js/jquery.dataTables.min.js') }}"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -33,5 +41,14 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "scrollX": true
+            });
+
+        });
+        </script>
     </body>
 </html>

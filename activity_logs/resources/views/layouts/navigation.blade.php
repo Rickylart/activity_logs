@@ -75,6 +75,14 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('add-product')" :active="request()->routeIs('add-product')">
+                        {{ __('Add Products') }}
+                    </x-responsive-nav-link>
+                    @if (auth()->user()->is_admin === 1)
+                    <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
+                        {{ __('View Users') }}
+                    </x-responsive-nav-link>
+                    @endif
         </div>
 
         <!-- Responsive Settings Options -->

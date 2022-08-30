@@ -42,7 +42,7 @@
                             <h1>Users Table</h1>
                             <br/>
                             <x-alert/>
-                    <table id="example" class="table table-striped" style="width:100%">
+                    <table id="example" class="table table-dark table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Fullname</th>
