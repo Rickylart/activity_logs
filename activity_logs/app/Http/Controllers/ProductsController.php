@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\ActivityLogs;
 use Illuminate\Http\Request;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -54,6 +55,45 @@ class ProductsController extends Controller
         else{
             return redirect()->back()->with('error', 'Failed to add Product');
         }
+    }
+
+    public function product_status($id){
+        try {
+            //*********Get current user id and name **************/
+        $user_id = auth()->user()->id;
+        $user_name = auth()->user()->name;
+        $status = '';
+
+        //******Get Product by id */
+        $fetchProducts = Products::findOrFail($id);
+
+        //******Check product status */
+        if ($fetchProducts->status === 'pending') {
+            //*****Update status*/
+            $status = 'published';
+            DB::update('update products set status = ? where id = ?', [$status,$id]);
+        }
+        else{
+            //*****Update status*/
+            $status = 'pending';
+            DB::update('update products set status = ? where id = ?', [$status,$id]);
+        }
+
+
+        //********** creating a custom message for the activity table with current user id */
+        $activity_data = [
+            'user_id' => $user_id,
+            'activity' => $user_name." updated a product status with the following details : <br/> Product Name - <b class='text-success'>[".$fetchProducts->product_name."]</b> <br/> Product Cost - <b class='text-success'>[GHs".$fetchProducts->product_cost."]</b> <br/> Product Type - <b class='text-success'>[".$fetchProducts->product_type."]</b> <br/> Product Status - from <b class='text-danger'>[".$fetchProducts->status."]</b> to <b class='text-success'>[".$status."]</b> <br/> on ".date('d F Y , h:i:s A')
+        ];
+
+        ActivityLogs::Create($activity_data);
+
+        return redirect()->to(route('add-product'))->with('success', 'Product updated successful');
+
+        } catch (\Throwable $th) {
+            return redirect()->to(route('add-product'))->with('error', $th->getMessage());
+        }
+
     }
 
     public function edit_product($id){

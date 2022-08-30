@@ -21,7 +21,7 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth','checkStatus'])->group(function(){
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->name('dashboard');
@@ -30,6 +30,11 @@ Route::middleware(['auth'])->group(function(){
     //     return view('add-product');
     // })->name('add-product');
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class,'index'])->name('dashboard');
+    Route::get('/users', [App\Http\Controllers\HomeController::class,'user'])->name('user');
+
+    //************Users Route */
+    Route::get('/users/{id?}', [App\Http\Controllers\HomeController::class,'status'])->name('status');
+    //************Users Route */
 
     //***************Products Route */
     Route::get('/add-product', [App\Http\Controllers\ProductsController::class,'index'])->name('add-product');
@@ -37,6 +42,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/show-product/{id?}', [App\Http\Controllers\ProductsController::class,'edit_product'])->name('edit');
     Route::post('/update-product', [App\Http\Controllers\ProductsController::class,'update_product'])->name('update');
     Route::post('/destroy-product', [App\Http\Controllers\ProductsController::class,'destroy_product'])->name('destroy');
+    Route::get('/product_status/{id?}', [App\Http\Controllers\ProductsController::class,'product_status'])->name('product_status');
      //***************Products Route */
 });
 

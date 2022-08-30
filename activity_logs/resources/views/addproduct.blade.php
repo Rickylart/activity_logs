@@ -111,6 +111,7 @@
                                             <th>Name</th>
                                             <th>Cost</th>
                                             <th>Type</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                             <th>Timestamp</th>
                                         </tr>
@@ -122,8 +123,17 @@
                                             <td>{{ $product->product_name }}</td>
                                             <td>GHs{{ $product->product_cost }}</td>
                                             <td>{{ $product->product_type }}</td>
+                                            <td>{{ $product->status }}</td>
                                             <td>
                                             <div class="row">
+                                            <div class="col-3">
+                                            @if ($product->status === 'pending')
+                                                <a href="{{ route('product_status') }}/{{ $product->id }}" class="btn btn-block btn-success">Publish</a>
+                                            @else
+                                                <a href="{{ route('product_status') }}/{{ $product->id }}" class="btn btn-block btn-info">Draft</a>
+                                            @endif
+
+                                            </div>
                                             <div class="col-3">
                                             <a href="{{ route('edit') }}/{{ $product->id }}" class="btn btn-block btn-warning">edit</a>
                                             </div>
@@ -153,6 +163,7 @@
                                             <th>Name</th>
                                             <th>Cost</th>
                                             <th>Type</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                             <th>Timestamp</th>
                                         </tr>

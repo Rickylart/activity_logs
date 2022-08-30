@@ -18,23 +18,24 @@
                                 <div class="card bg-c-blue order-card">
                                     <div class="card-block">
                                         <h6 class="m-b-20">All Products</h6>
-                                        <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span>
+                                        <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{ $total_products }}</span>
                                         </h2>
-                                        <p class="m-b-0">Published Products<span class="f-right">351</span></p>
+                                        <p class="m-b-0">Unpublished Products : <span class="f-right">{{ $pending_products }}</span></p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-xl-6">
+                            @if (auth()->user()->is_admin === 1)
+                                <div class="col-md-6 col-xl-6">
                                 <div class="card bg-c-green order-card">
                                     <div class="card-block">
                                         <h6 class="m-b-20">All Users</h6>
-                                        <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
-                                        <p class="m-b-0">Pending Users<span class="f-right">351</span></p>
+                                        <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>{{ $total_users }}</span></h2>
+                                        <p class="m-b-0">Pending Users : <span class="f-right">{{ $inactive_users }}</span></p>
                                     </div>
                                 </div>
                             </div>
-
+                            @endif
 
 
                             <div>

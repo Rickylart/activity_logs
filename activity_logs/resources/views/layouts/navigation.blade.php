@@ -18,9 +18,12 @@
                     <x-nav-link :href="route('add-product')" :active="request()->routeIs('add-product')">
                         {{ __('Add Products') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    @if (auth()->user()->is_admin === 1)
+                    <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
                         {{ __('View Users') }}
                     </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
