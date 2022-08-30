@@ -24,18 +24,8 @@
                                 </div>
                             </div>
 
-
+                &nbsp;&nbsp;&nbsp;&nbsp;
                             @if (auth()->user()->is_admin === 1)
-                                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Users</div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Users : {{ $total_users }}</h5>
-                                        <hr />
-                                        <p class="m-b-0">Pending Users : <span
-                                                class="f-right">{{ $inactive_users }}</span></p>
-                                    </div>
-                                </div>
-
                                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
                                     <div class="card-header">Users</div>
                                     <div class="card-body">
