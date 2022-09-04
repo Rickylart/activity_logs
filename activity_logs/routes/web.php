@@ -40,9 +40,10 @@ Route::middleware(['auth','checkStatus'])->group(function(){
     Route::get('/add-product', [App\Http\Controllers\ProductsController::class,'index'])->name('add-product');
     Route::post('/store-product', [App\Http\Controllers\ProductsController::class,'add_product'])->name('store');
     Route::get('/show-product/{id?}', [App\Http\Controllers\ProductsController::class,'edit_product'])->name('edit');
-    Route::post('/update-product', [App\Http\Controllers\ProductsController::class,'update_product'])->name('update');
-    Route::post('/destroy-product', [App\Http\Controllers\ProductsController::class,'destroy_product'])->name('destroy');
-    Route::get('/product_status/{id?}', [App\Http\Controllers\ProductsController::class,'product_status'])->name('product_status');
+    Route::patch('/update-product/{id?}', [App\Http\Controllers\ProductsController::class,'update_product'])->name('update');
+    Route::delete('/destroy-product/{id?}', [App\Http\Controllers\ProductsController::class,'destroy_product'])->name('destroy');
+    Route::patch('/product_status/{id?}', [App\Http\Controllers\ProductsController::class,'product_status'])->name('product_status');
+    Route::get('/product_comment/{id?}', [App\Http\Controllers\ProductsController::class,'give_product_comment'])->name('give_product_comment');
      //***************Products Route */
 });
 

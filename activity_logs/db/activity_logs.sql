@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 30, 2022 at 11:27 PM
+-- Host: localhost
+-- Generation Time: Sep 04, 2022 at 03:34 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -106,6 +106,7 @@ CREATE TABLE `products` (
   `product_cost` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `product_comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -224,7 +225,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
